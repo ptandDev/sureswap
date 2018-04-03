@@ -1,0 +1,95 @@
+
+body {
+    color:#676a6d;
+    background: #fefefe;
+    font-family: Georgia, Times, "Times New Roman", serif;
+    font-style: normal;
+}
+
+thead {
+    font-size: 16px;
+    background: #A99887;
+    font-weight: 900;
+    color:#fefefe;
+}
+
+th {
+    text-align: center;
+}
+
+a {
+    font-weight: 900;
+    font-size: 25px;
+    color: #fefefe;
+    outline: none!important;
+}
+
+a:hover {
+    color: #fefefe;
+    opacity: 0.5;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+a:active {
+    color: #fefefe;
+}
+
+a:visited {
+    color: #fefefe;
+}
+
+h2 {
+    color: #695847;
+}
+
+.col-md-12 {
+    padding-right: 0;
+    padding-left: 0;
+}
+
+.bmargin {
+    margin-bottom: 40px;
+}
+
+.div-top {
+    background: #695847;
+    font-weight: 900;
+    font-size: 25px;
+    color: #fefefe;
+}
+
+.table {
+    font-weight: bold;
+    text-align: center;
+}
+
+.city {
+    margin: 30px;
+    float: right;
+}
+
+.sitename {
+    margin: 30px;
+    float: left;
+}
+
+.sitename:hover{
+    opacity: 1;
+}
+
+
+
+.tsort {
+}
+.tsort > thead > tr > th {
+    cursor:pointer;
+}
+.tsort > tbody > tr > td {
+}
+.tsort > thead > tr > th.sel {
+    background: url('images/1.gif') 50% 100% no-repeat;
+}
+.tsort > thead > tr > th.sel.asc {
+    background: url('images/0.gif') 50% 100% no-repeat;
+}
