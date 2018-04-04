@@ -21,7 +21,7 @@
                 <strong>&nbsp;&nbsp;&nbsp;{{$azbuka[$i]}}</strong>
             </h2>
             @foreach($citiesName[$azbuka[$i]] as $item)
-                <a style="color: #676a6d; font-size: large;" href = "http://kursi/{{$item[1]}}"> {{$item[0]}} </a>
+                <a style="color: #676a6d; font-size: large;" href = "{{route('index').'/'.$item[1]}}"> {{$item[0]}} </a>
             @endforeach
     @endfor
         </div>

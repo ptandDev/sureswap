@@ -16,7 +16,7 @@ echo '<div class="row col-md-12">
       <strong>&nbsp&nbsp&nbsp'.mb_substr(trim($search), 0, 1, 'UTF-8').'</strong></h2></div>';
 
 foreach($array as $item){
-    echo '<a style="color: #676a6d; font-size: large;" href = "http://kursi/'.$item['alias'].'"> '.$item['name'].' </a>';
+    echo '<a style="color: #676a6d; font-size: large;" href = "http://sureswap/'.$item['alias'].'"> '.$item['name'].' </a>';
 }
 
 function up_letter($string, $encoding = 'UTF-8'){

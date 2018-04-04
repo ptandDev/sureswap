@@ -7,6 +7,8 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 
+date_default_timezone_set("Europe/Moscow");
+
 class parseCurrency
 {
     public function parseCurrency(string $cityUrl, string $cityName)
@@ -28,10 +30,9 @@ class parseCurrency
         );
         $curl->post('http://www.banki.ru/products/currency/bank_seller_rates_table/'.$cityUrl.'/');
 
-        if ($curl->error) return;
+        if ($curl->error || $curl->responseHeaders['status-line'] != 'HTTP/1.1 200 OK') return false;
 
         if (Schema::hasTable($cityName)) DB::table($cityName)->truncate();
-
         else {
             Schema::create($cityName, function (Blueprint $table) {
                 $table->increments('id');
@@ -73,6 +74,8 @@ class parseCurrency
             } catch (\Exception $e) {}
         }
         DB::commit();
+
+        return true;
     }
 
     private function strStandart(string $string, int $count)

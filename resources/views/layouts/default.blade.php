@@ -22,7 +22,7 @@
 <body>
     <div class="container">
         <div class="row col-md-12 div-top bmargin">
-            <a class="sitename" href="http://kursi/">Курсы валют</a>
+            <a class="sitename" href={{route('index')}}>Курсы валют</a>
             @if(Route::currentRouteName()=='index')
                 <p class="city">Ваш город</p>
                 @else

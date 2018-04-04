@@ -6,10 +6,14 @@ use App\Services\{parseCurrency, parseCities, parserCBR};
 use App\CurrentCity;
 
 set_time_limit(0);
-date_default_timezone_set("Europe/Moscow");
 
 class ParseController extends Controller
 {
+    public function parseCitiesCbr ()
+    {
+
+    }
+
     public function run()
     {
         $parseCities = new parseCities();
@@ -17,12 +21,21 @@ class ParseController extends Controller
 
         $parserCBR = new parserCBR();
         $parserCBR->parseCBR();
-
-        $Cities = new CurrentCity();
-        $Cities = $Cities->oldest('id')->get();
+        sleep(300);
 
         $parseCurrency = new parseCurrency();
-        foreach ($Cities as $item) $parseCurrency->parseCurrency($item->slug, $item->alias);
-     }
+        $cities = new CurrentCity();
+
+        $citiesCollection = $cities->all();
+        foreach ($citiesCollection->chunk(15) as $citiesChunk){
+            foreach ($citiesChunk as $item) {
+                if (!($parseCurrency->parseCurrency($item->slug, $item->alias))) {
+                    sleep(300);
+                    $parseCurrency->parseCurrency($item->slug, $item->alias);
+                }
+            }
+            sleep(60);
+        }
+    }
 }
 
