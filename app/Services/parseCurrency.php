@@ -6,8 +6,7 @@ use Curl\Curl;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
-
-date_default_timezone_set("Europe/Moscow");
+use Illuminate\Support\Facades\Storage;
 
 class parseCurrency
 {
@@ -30,7 +29,10 @@ class parseCurrency
         );
         $curl->post('http://www.banki.ru/products/currency/bank_seller_rates_table/'.$cityUrl.'/');
 
-        if ($curl->error || $curl->responseHeaders['status-line'] != 'HTTP/1.1 200 OK') return false;
+        if ($curl->error || $curl->responseHeaders['status-line'] != 'HTTP/1.1 200 OK') {
+            Storage::append('parserLogs.txt', $cityName."   bad  ".date('H:i:s',time())."\n");
+            return false;
+        }
 
         if (Schema::hasTable($cityName)) DB::table($cityName)->truncate();
         else {
@@ -75,6 +77,7 @@ class parseCurrency
         }
         DB::commit();
 
+        Storage::append('parserLogs.txt', $cityName."   good  ".date('H:i:s',time())."\n");
         return true;
     }
 

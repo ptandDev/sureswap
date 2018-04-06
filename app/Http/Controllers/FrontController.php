@@ -19,9 +19,9 @@ class FrontController extends Controller
         $table = DB::table($slug)->get();
 
         $bestArray = [
-            'maxbuyusd' => $table->pluck('buyusd')->min() ? $table->pluck('buyusd')->min() : '-',
+            'maxbuyusd' => $table->pluck('buyusd')->max() ? $table->pluck('buyusd')->max() : '-',
             'minsellusd' => $table->pluck('sellusd')->min() ? $table->pluck('sellusd')->min() : '-',
-            'maxbuyeur' => $table->pluck('buyeur')->min() ? $table->pluck('buyeur')->min() : '-',
+            'maxbuyeur' => $table->pluck('buyeur')->max() ? $table->pluck('buyeur')->max() : '-',
             'minselleur' => $table->pluck('selleur')->min() ? $table->pluck('selleur')->min() : '-',
         ];
 

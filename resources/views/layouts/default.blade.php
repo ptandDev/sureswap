@@ -2,11 +2,12 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>App Name</title>
+    <title>Курсы валют - {{$currentCity}}</title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Курсы вылют">
+    <meta name="description" content="Курсы валют банков в городе {{$currentCity}}. Лучшие курсы валют. Выгодные курсы вылют. Курсы ЦБ">
 
+    <link href="https://fonts.googleapis.com/css?family=Arbutus+Slab" rel="stylesheet">
     <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
     <link href="{{ asset('css/default.css') }}" rel="stylesheet">
 
@@ -21,10 +22,14 @@
 </head>
 <body>
     <div class="container">
-        <div class="row col-md-12 div-top bmargin">
-            <a class="sitename" href={{route('index')}}>Курсы валют</a>
-            @if(Route::currentRouteName()=='index')
-                <p class="city">Ваш город</p>
+        <div class="row div-top">
+            <div class="col-md-12">
+                <a class="sitename" href={{route('index')}}>GOOD$WAP<small><i>.ru</i></small></a>
+                @if(Route::currentRouteName()=='index')
+                    <div class="city">
+                        <span class="glyphicon glyphicon-map-marker"></span>
+                        Город
+                    </div>
                 @else
                     <div class="city visible-md visible-lg">
                         <span class="glyphicon glyphicon-map-marker"></span>
@@ -34,7 +39,8 @@
                         <span class="glyphicon glyphicon-map-marker"></span>
                         <a href={{route('index')}}>{{$currentCity}}</a>
                     </div>
-            @endif
+                @endif
+            </div>
         </div>
     @yield('content')
     </div>

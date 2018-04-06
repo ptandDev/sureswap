@@ -1,6 +1,6 @@
 <div class="modal-header">
     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-    <h3 class="modal-title" id="myModalLabel">Выбирите город</h3>
+    <h3 class="modal-title" id="myModalLabel" style="color: #695847;"><strong>Выбирите город</strong></h3>
 </div>
 <div class="modal-body ">
     <table style="width: 100%; margin: 0 auto;">

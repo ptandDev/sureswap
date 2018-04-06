@@ -1,42 +1,46 @@
 @extends('layouts.default')
 
 @section('content')
-    <div class="row col-md-12 bmargin">
-        <h2><strong>Курсы валют в городе {{$currentCity}} на сегодня {{date('d.m.Y', time())}}</strong></h2>
+    <div class="row">
+        <div class="col-md-12 bmargin">
+            <h2><strong>Курсы валют в городе {{$currentCity}} на сегодня {{date('d.m.Y', time())}}</strong></h2>
+        </div>
     </div>
 
-    <div class="row col-md-12" style="padding-right: 0; padding-left: 0">
-        <div class="col-md-3 panel panel-default" style="padding-left: 0">
-            <div class="panel-body">
-                <table class="table">
-                    <tr>
-                        <td align="left">валюта</td>
-                        <td>{{$cbr[0]->name}}</td>
-                        <td>{{$cbr[1]->name}}</td>
-                    </tr>
-                    <tr>
-                        <td align="left">курсы ЦБ</td>
-                        <td>{{$cbr[0]->value}}</td>
-                        <td>{{$cbr[1]->value}}</td>
-                    </tr>
-                    <tr>
-                        <td colspan="3" align="left"><strong>выгодные курсы банков</strong></td>
-                    </tr>
-                    <tr>
-                        <td align="left">покупка</td>
-                        <td>{{$bestArray['maxbuyusd']}}</td>
-                        <td>{{$bestArray['maxbuyeur']}}</td>
-                    </tr>
-                    <tr>
-                        <td align="left">продажа</td>
-                        <td>{{$bestArray['minsellusd']}}</td>
-                        <td>{{$bestArray['minselleur']}}</td>
-                    </tr>
-                </table>
+    <div class="row">
+        <div class="col-md-4">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <table class="table" style="color: #695847;">
+                        <tr>
+                            <td align="left">валюта</td>
+                            <td>{{$cbr[0]->name}}</td>
+                            <td>{{$cbr[1]->name}}</td>
+                        </tr>
+                        <tr>
+                            <td align="left">курсы ЦБ</td>
+                            <td>{{$cbr[0]->value}}</td>
+                            <td>{{$cbr[1]->value}}</td>
+                        </tr>
+                        <tr>
+                            <td colspan="3" align="left"><strong>выгодные курсы банков</strong></td>
+                        </tr>
+                        <tr>
+                            <td align="left">покупка</td>
+                            <td>{{$bestArray['maxbuyusd']}}</td>
+                            <td>{{$bestArray['maxbuyeur']}}</td>
+                        </tr>
+                        <tr>
+                            <td align="left">продажа</td>
+                            <td>{{$bestArray['minsellusd']}}</td>
+                            <td>{{$bestArray['minselleur']}}</td>
+                        </tr>
+                    </table>
+                </div>
             </div>
         </div>
 
-        <div class="col-md-9" style="padding-right: 0">
+        <div class="col-md-8">
             @if($table->isEmpty())
                 <pre>Для выбранного города нет данных</pre>
             @else
@@ -49,10 +53,10 @@
                         </tr>
                         <tr>
                             <th style="text-align: left">Банк</th>
-                            <th>Продажа</th>
-                            <th>Покупка</th>
-                            <th>Продажа</th>
-                            <th>Покупка</th>
+                            <th>покупка</th>
+                            <th>продажа</th>
+                            <th>покупка</th>
+                            <th>продажа</th>
                         </tr>
                     </thead>
                     <tbody>

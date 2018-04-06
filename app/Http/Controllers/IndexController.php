@@ -8,6 +8,7 @@ class IndexController extends Controller
 {
     public function __invoke()
     {
+        $currentCity = 'Россия';
         $citiesName=[];
 
         $azbuka = [ 'А','Б','В','Г','Д','Е',
@@ -23,6 +24,6 @@ class IndexController extends Controller
                 $citiesName[$azbuka[$i]][] = [$item->name, $item->alias];
             }
         }
-        return view('index')->with(compact('citiesName', 'azbuka'));
+        return view('index')->with(compact('citiesName', 'azbuka', 'currentCity'));
     }
 }
