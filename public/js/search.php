@@ -4,8 +4,9 @@ $search = $_POST['search'];
 $search = up_letter(addslashes(htmlspecialchars(stripslashes(trim($search)))));
 
 if($search == '') exit();
-$db = new SQLite3('E:\MyOpenServer\OSPanel\domains\kursi\database\database.sqlite');
+$db = new SQLite3('/var/www/doors/data/www/goodswap.ru/database/database.sqlite');
 $result = $db->query("SELECT name, alias FROM current_cities WHERE name LIKE '{$search}%'");
+
 $array = [];
 while($data = $result->fetchArray(SQLITE3_ASSOC)) $array[] = $data;
 
@@ -16,7 +17,7 @@ echo '<div class="row col-md-12">
       <strong>&nbsp&nbsp&nbsp'.mb_substr(trim($search), 0, 1, 'UTF-8').'</strong></h2></div>';
 
 foreach($array as $item){
-    echo '<a style="color: #676a6d; font-size: large;" href = "http://sureswap/'.$item['alias'].'"> '.$item['name'].' </a>';
+    echo '<a style="color: #676a6d; font-size: large; text-decoration: none!important;" href = "https://goodswap.ru/'.$item['alias'].'"> '.$item['name'].' </a>';
 }
 
 function up_letter($string, $encoding = 'UTF-8'){

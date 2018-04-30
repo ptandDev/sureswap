@@ -30,7 +30,7 @@ class parseCurrency
         $curl->post('http://www.banki.ru/products/currency/bank_seller_rates_table/'.$cityUrl.'/');
 
         if ($curl->error || $curl->responseHeaders['status-line'] != 'HTTP/1.1 200 OK') {
-            Storage::append('parserLogs.txt', $cityName."   bad  ".date('H:i:s',time())."\n");
+            Storage::append('parserLogs.txt', $cityName."   bad  ".date('d.m H:i:s',time())."\n");
             return false;
         }
 
@@ -77,7 +77,7 @@ class parseCurrency
         }
         DB::commit();
 
-        Storage::append('parserLogs.txt', $cityName."   good  ".date('H:i:s',time())."\n");
+        Storage::append('parserLogs.txt', $cityName."   good  ".date('d.m H:i:s',time())."\n");
         return true;
     }
 

@@ -9,8 +9,8 @@ class parserCBR
     {
         $result = [];
         $parseCBR = simplexml_load_file('https://www.cbr.ru/scripts/XML_daily.asp');
-        foreach ($parseCBR->Valute as $item)
-            if ($item->CharCode == 'USD' || $item->CharCode == 'EUR') {
+        foreach ($parseCBR->Valute as $item){
+//            if ($item->CharCode == 'USD' || $item->CharCode == 'EUR') {
                 $result[] = [
                     'name' => (string)$item->CharCode,
                     'value' => substr((string)$item->Value, 0, 5),

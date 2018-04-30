@@ -11,7 +11,6 @@ class ParseController extends Controller
 {
     public function run()
     {
-
         $parseCities = new parseCities();
         $parseCities->parseCities();
 
@@ -26,8 +25,8 @@ class ParseController extends Controller
         foreach ($citiesCollection as $item){
             sleep(1);
             if (!($parseCurrency->parseCurrency($item->slug, $item->alias))) {
-                    sleep(600);
-                }
+                sleep(600);
+            }
         }
     }
 }

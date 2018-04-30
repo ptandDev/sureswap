@@ -14,7 +14,7 @@ class FrontController extends Controller
     {
         if (!Schema::hasTable($slug)) abort(404);
 
-        $currentCity = CurrentCity::getCurrentCityName($slug);
+        $currentCity = CurrentCity::getCurrentCityName($slug) ? CurrentCity::getCurrentCityName($slug) : '';
         $cbr = Cbr::getCurrentCbr();
         $table = DB::table($slug)->get();
 

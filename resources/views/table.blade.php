@@ -13,17 +13,12 @@
                 <div class="panel-body">
                     <table class="table" style="color: #695847;">
                         <tr>
-                            <td align="left">валюта</td>
-                            <td>{{$cbr[0]->name}}</td>
-                            <td>{{$cbr[1]->name}}</td>
+                            <td colspan="3"><strong>ЛУЧШИЕ КУРСЫ БАНКОВ</strong></td>
                         </tr>
                         <tr>
-                            <td align="left">курсы ЦБ</td>
-                            <td>{{$cbr[0]->value}}</td>
-                            <td>{{$cbr[1]->value}}</td>
-                        </tr>
-                        <tr>
-                            <td colspan="3" align="left"><strong>выгодные курсы банков</strong></td>
+                            <td align="left">валюты</td>
+                            <td>USD</td>
+                            <td>EUR</td>
                         </tr>
                         <tr>
                             <td align="left">покупка</td>
@@ -38,6 +33,26 @@
                     </table>
                 </div>
             </div>
+
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="panel panel-default">
+                        <div class="panel-body">
+                            <table class="table" style="color: #695847;">
+                                <tr>
+                                    <td colspan="3"><strong>КУРСЫ ЦБ</strong></td>
+                                </tr>
+                                @foreach($cbr as $item)
+                                <tr>
+                                    <td align="left">{{$item->name}}</td>
+                                    <td>{{$item->value}}</td>
+                                </tr>
+                                @endforeach
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
 
         <div class="col-md-8">
@@ -46,18 +61,18 @@
             @else
                 <table class="table table-responsive table-striped tsort">
                     <thead>
-                        <tr>
-                            <td style="text-align: left"><small>{{date('время последнего обновления H:i:s', $table[0]->updated_at)}}</small></td>
-                            <td colspan="2">Доллар $</td>
-                            <td colspan="2">Евро &euro;</td>
-                        </tr>
-                        <tr>
-                            <th style="text-align: left">Банк</th>
-                            <th>покупка</th>
-                            <th>продажа</th>
-                            <th>покупка</th>
-                            <th>продажа</th>
-                        </tr>
+                    <tr>
+                        <td style="text-align: left"><small>{{date('время последнего обновления H:i:s', $table[0]->updated_at)}}</small></td>
+                        <td colspan="2">Доллар $</td>
+                        <td colspan="2">Евро &euro;</td>
+                    </tr>
+                    <tr>
+                        <th style="text-align: left">Банк</th>
+                        <th>покупка</th>
+                        <th>продажа</th>
+                        <th>покупка</th>
+                        <th>продажа</th>
+                    </tr>
                     </thead>
                     <tbody>
                     @foreach($table as $item)
@@ -76,7 +91,7 @@
     </div>
 
     <!-- Modal -->
-    <div data-remote="{{ asset('js/remote.php') }}" class="modal fade bs-example-modal-lg"  tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div data-remote="{{ secure_asset('js/remote.php') }}" class="modal fade bs-example-modal-lg"  tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
             </div>

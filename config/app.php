@@ -52,7 +52,7 @@ return [
     |
     */
 
-    'url' => env('APP_URL', 'http://localhost'),
+    'url' => env('APP_URL', 'https://goodswap.ru'),
 
     /*
     |--------------------------------------------------------------------------
@@ -150,7 +150,7 @@ return [
         /*
          * Package Service Providers...
          */
-
+        Roumen\Sitemap\SitemapServiceProvider::class,
         /*
          * Application Service Providers...
          */
